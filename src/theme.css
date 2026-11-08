@@ -1,0 +1,305 @@
+/* =====================================================================
+   THEME: edit this one file to change fonts and colors across the app.
+
+   How it works: every setting below is a CSS variable (--name: value).
+   The rest of the app uses them as var(--name), so changing a value here
+   changes it everywhere that variable is used. Colors can be any CSS
+   color: hex (#ffadad), rgb(255 173 173) or a name (tomato).
+
+   Want a different look? Ready-made font pairs and color palettes are at
+   the bottom of this file (FONT OPTIONS / PALETTE OPTIONS).
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   FONT FILES
+   This line downloads the fonts from Google Fonts. It must stay at the
+   very top of the file. Opening the link in a browser shows a page of
+   CSS code; that's expected, it's a stylesheet, not a web page.
+   (%3B is just an encoded ";". It keeps the link clickable in editors.)
+
+   To switch fonts: comment out the active @import line (add the comment
+   markers, slash-star before and star-slash after), remove the comment
+   markers from one of the other lines, then follow the matching option in
+   FONT OPTIONS at the bottom of the file.
+   --------------------------------------------------------------------- */
+
+/* Current: Plus Jakarta Sans + Instrument Serif */
+/*@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400%3B500%3B600%3B700&family=Fredoka:wght@500%3B600&display=swap');*/
+
+/* Option B: DM Sans + Fraunces */
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400%3B500%3B600%3B700&family=Fraunces:ital,wght@0,600%3B1,600&display=swap'); */
+
+/* Option C: Inter + Space Grotesk */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Space+Grotesk:wght@500..700&display=swap');
+/* Option D: Nunito + Fredoka */
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400%3B500%3B600%3B700&family=Fredoka:wght@500%3B600&display=swap'); */
+
+/* Option E: Manrope + Playfair Display */
+/* @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400%3B500%3B600%3B700&family=Playfair+Display:ital@0%3B1&display=swap'); */
+
+
+:root {
+
+  /* ===================================================================
+     FONTS
+     =================================================================== */
+
+  /* Font for ALL regular text: card titles and descriptions, buttons,
+     inputs, sidebar, filters, comments, calendar numbers.
+     The names after the comma are backups used while the font loads. */
+  /*--font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Font for the BIG headings only: "Kanban Board" at the top of the page,
+     "New task" in the pop-up, the task title in the detail panel, and the
+     month name in the calendar. */
+  /*--font-display: 'Instrument Serif', Georgia, serif;
+
+  /* Slant of those big headings: italic or normal. */
+  /*--font-display-style: italic;
+
+
+  /* ===================================================================
+     PALETTE: the six main colors
+     These names are also the color choices for team member avatars and
+     labels (the swatches in the sidebar). Changing --pink changes every
+     "pink" avatar and label too.
+     =================================================================== */
+
+  --pink: #ffadad;      /* High priority badge, Overdue badge + stat, delete hovers,
+                           today's ring in the calendar, "pink" avatars/labels */
+  --peach: #ffd6a5;     /* In Progress column, "Due today" badge, error messages,
+                           label-change dots in the activity timeline */
+  --yellow: #fdffb6;    /* Medium priority badge, "Due soon" badge,
+                           edit dots in the activity timeline */
+  --mint: #e4f1ee;      /* Done column, Low priority badge, Done stat in the sidebar,
+                           "created" dot in the activity timeline */
+  --blue: #d9edf8;      /* To Do column, status-change dots in the activity timeline */
+  --lavender: #dedaf4;  /* In Review column, focus outline on inputs, selected day
+                           in the calendar, active filter dropdowns */
+
+
+  /* ===================================================================
+     NEUTRALS: backgrounds, text and borders
+     =================================================================== */
+
+  --bg: #f4f2ed;          /* Page background behind everything (the warm cream) */
+  --surface: #ffffff;     /* Cards, the sidebar, the pop-up, the detail panel,
+                             the calendar dropdown, search box and filter pills */
+  --field: #f7f6f2;       /* Inside of inputs (description, due date), unselected
+                             priority/assignee buttons, small round icon buttons,
+                             comment bubbles, hover background in lists */
+  --ink: #2a2730;         /* Main text color everywhere, AND the background of dark
+                             buttons ("+ Add task", "Add task", calendar "Today") */
+  --ink-hover: #45404d;   /* Dark buttons when you hover over them */
+  --on-ink: #ffffff;      /* Text ON the dark buttons (must contrast with --ink) */
+  --muted: #7a7582;       /* Secondary text: descriptions on cards, "Due Nov 3",
+                             timestamps, section headings like "PRIORITY", empty
+                             messages, the search icon */
+  --placeholder: #c4c0ca; /* Hint text inside empty inputs ("Task title") and the
+                             faded days from other months in the calendar */
+  --line: #ebe8e1;        /* Thin borders and dividers: sidebar edge, panel header
+                             line, tabs underline, calendar border, Cancel button */
+  --count-bg: rgba(255, 255, 255, 0.7); /* Little number bubble next to each column
+                                           name ("TO DO  3") */
+
+
+  /* ===================================================================
+     ACCENTS: states and messages
+     =================================================================== */
+
+  --focus: var(--lavender);    /* Outline when you click into an input, the search box
+                                  or a dropdown; highlight around the active sidebar person */
+  --selected: var(--lavender); /* Chosen date in the calendar; dropdowns that have
+                                  a filter set */
+  --today-ring: var(--pink);   /* Circle around today's date in the calendar */
+  --danger: var(--pink);       /* Hover color of delete buttons (× on cards, sidebar,
+                                  trash can in the panel) and the error banner */
+  --notice: var(--peach);      /* Message box on the "Couldn't start" screen */
+
+
+  /* ===================================================================
+     COLUMNS: background of each board column
+     (also used for the status pill at the top of the detail panel)
+     =================================================================== */
+
+  --todo-bg: var(--blue);
+  --in_progress-bg: var(--peach);
+  --in_review-bg: var(--lavender);
+  --done-bg: var(--mint);         /* also the "Done" box in the sidebar summary */
+
+
+  /* ===================================================================
+     TASK TITLE COLORS: the colored title text on each card, by column.
+     Use darker versions of the column colors; pastels are too light
+     to read as text on a white card.
+     =================================================================== */
+
+  --todo-title: #2f6f93;
+  --in_progress-title: #b8661a;
+  --in_review-title: #5a4fa3;
+  --done-title: #3d7a68;          /* also the fill of the progress bar in the sidebar */
+
+
+  /* ===================================================================
+     DUE DATE URGENCY: badge on the card + colored stripe on its left edge
+     =================================================================== */
+
+  --urgency-overdue: var(--pink);   /* "Overdue by 2 days" (and the Overdue box in the summary) */
+  --urgency-today: var(--peach);    /* "Due today" */
+  --urgency-soon: var(--yellow);    /* "Due tomorrow" / "Due in 3 days" */
+
+
+  /* ===================================================================
+     PRIORITY: the Low / Medium / High badge on cards, and the selected
+     button in the priority picker (pop-up and detail panel)
+     =================================================================== */
+
+  --priority-low: var(--mint);
+  --priority-medium: var(--yellow);
+  --priority-high: var(--pink);
+
+
+  /* ===================================================================
+     SHAPE: roundness and shadows
+     =================================================================== */
+
+  --radius-sm: 10px;  /* Inputs, priority buttons, summary boxes, sidebar rows */
+  --radius: 16px;     /* Cards, calendar dropdown, comment bubbles */
+  --radius-lg: 24px;  /* Columns, the pop-up, big containers.
+                         Set all three to 4px for a sharp, boxy look. */
+
+  --shadow: 0 1px 2px rgba(42, 39, 48, 0.04), 0 4px 14px rgba(42, 39, 48, 0.06);
+                      /* Soft shadow under cards, search box and filter pills */
+  --shadow-hover: 0 2px 4px rgba(42, 39, 48, 0.05), 0 10px 24px rgba(42, 39, 48, 0.1);
+                      /* Bigger shadow when you hover over a card */
+  --shadow-lg: 0 24px 60px rgba(42, 39, 48, 0.18);
+                      /* Pop-up, detail panel, calendar dropdown, the card you're dragging */
+  --overlay: rgba(42, 39, 48, 0.35);
+                      /* Dark see-through layer behind the pop-up and detail panel.
+                         The last number is how dark it is (0 = invisible, 1 = solid). */
+}
+
+
+/* =====================================================================
+   FONT OPTIONS
+   Each option needs TWO changes:
+     1. At the top of this file, turn on that option's @import line
+        (and comment out the current one).
+     2. Here, delete the slash-star line just above its :root block and
+        the star-slash line just below it.
+   Turn on only one font option at a time.
+   ===================================================================== */
+
+/* ---- B: DM Sans + Fraunces: warm and editorial, a soft "magazine" serif ---- */
+/*
+:root {
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-display-style: italic;
+}
+*/
+
+/* ---- C: Inter + Space Grotesk: clean, techy, startup-dashboard feel ---- */
+
+:root {
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display-style: normal;
+}
+
+/* ---- D: Nunito + Fredoka: rounded and friendly, playful ---- */
+/*
+:root {
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-display-style: normal;
+}
+*/
+
+/* ---- E: Manrope + Playfair Display: classic and elegant, high contrast ---- */
+/*
+:root {
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-display-style: italic;
+}
+*/
+
+
+/* =====================================================================
+   PALETTE OPTIONS
+   To use one: delete the slash-star line just above its :root block and
+   the star-slash line just below it. It overrides the colors above, so you don't need to
+   change anything else. Turn on only one palette at a time.
+   ===================================================================== */
+
+/* ---- Sorbet: brighter, juicier version of the current pastels ---- */
+/*
+:root {
+  --pink: #ffa3b8;
+  --peach: #ffc68a;
+  --yellow: #fff08a;
+  --mint: #bdf0dc;
+  --blue: #b5d8ff;
+  --lavender: #cfc2ff;
+  --bg: #fbf8f3;
+  --todo-title: #1f5f99;
+  --in_progress-title: #b35a00;
+  --in_review-title: #5a3fc0;
+  --done-title: #1f7a5a;
+}
+*/
+
+/* ---- Earthy: muted, dusty tones (rose, sand, sage, slate) ---- */
+/*
+:root {
+  --pink: #e8b8b4;
+  --peach: #efd5bd;
+  --yellow: #efe4c0;
+  --mint: #d3dcc8;
+  --blue: #ccd8df;
+  --lavender: #dad0de;
+  --bg: #f2eee6;
+  --field: #f6f3ed;
+  --line: #e6e0d4;
+  --ink: #2f2a25;
+  --ink-hover: #4a433b;
+  --muted: #7d7469;
+  --todo-title: #3f5f73;
+  --in_progress-title: #9a5b34;
+  --in_review-title: #6b4f7b;
+  --done-title: #4f6b3f;
+}
+*/
+
+/* ---- Midnight: dark mode with deep jewel tones ---- */
+/*
+:root {
+  --pink: #8c3d50;
+  --peach: #8a5a2c;
+  --yellow: #77692a;
+  --mint: #2f6656;
+  --blue: #2b5675;
+  --lavender: #4f4585;
+  --bg: #141218;
+  --surface: #211e27;
+  --field: #2b2832;
+  --ink: #eeeaf3;
+  --ink-hover: #ffffff;
+  --on-ink: #141218;
+  --muted: #a49eae;
+  --placeholder: #6c6676;
+  --line: #34303c;
+  --count-bg: rgba(0, 0, 0, 0.25);
+  --focus: #9488e0;
+  --todo-title: #9fcbea;
+  --in_progress-title: #f2b77e;
+  --in_review-title: #beb3f5;
+  --done-title: #8fd4bd;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --overlay: rgba(0, 0, 0, 0.55);
+}
+*/
